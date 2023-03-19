@@ -27,4 +27,22 @@ class BookService {
       bookRepository.save(book);
     }
   }
+
+  Book find(String id) {
+    var book = bookRepository.findBookById(id);
+    if (book == null) {
+      throw Exception('book not found');
+    } else {
+      return book;
+    }
+  }
+
+  void delete(String id) {
+    var book = bookRepository.findBookById(id);
+    if (book == null) {
+      throw Exception('book not found');
+    } else {
+      bookRepository.delete(book);
+    }
+  }
 }
