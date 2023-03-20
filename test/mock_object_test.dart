@@ -20,7 +20,7 @@ void main() {
         'save new book must success',
         () {
           bookSevice.save('1', 'Tutor', 100);
-          verify(bookRepo.save(Book('1', 'Tutor', 100)));
+          verify(bookRepo.save(Book('1', 'Tutor', 100))).called(1);
         },
       );
     },
