@@ -38,6 +38,16 @@ void main() {
 
         verify(bookRepo.findBookById('1')).called(2);
       });
+
+      test('find book Ajjjiii', () {
+        when(bookRepo.findBookById(argThat(startsWith('aji'))))
+            .thenReturn(Book('aji', 'Tutor', 100));
+
+        var book = bookSevice.find('aji');
+        expect(book, equals(Book('aji', 'Tutor', 100)));
+
+        verify(bookRepo.findBookById(any)).called(1);
+      });
     },
   );
 }
