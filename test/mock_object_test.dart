@@ -23,6 +23,21 @@ void main() {
           verify(bookRepo.save(Book('1', 'Tutor', 100))).called(1);
         },
       );
+
+      test('test find book by id', () {
+        expect(() {
+          bookSevice.find('1');
+        }, throwsException);
+      });
+
+      test('book by id success', () {
+        when(bookRepo.findBookById('1')).thenReturn(Book('1', 'Tutor', 100));
+
+        var book = bookSevice.find('1');
+        expect(book, equals(Book('1', 'Tutor', 100)));
+
+        verify(bookRepo.findBookById('1')).called(2);
+      });
     },
   );
 }
