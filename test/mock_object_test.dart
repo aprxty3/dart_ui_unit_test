@@ -1,6 +1,7 @@
 import 'package:dart_ui_unit_test/book.dart';
-import 'package:flutter_test/flutter_test.dart';
+import 'package:test/test.dart';
 import 'package:mockito/annotations.dart';
+import 'package:mockito/mockito.dart';
 
 @GenerateNiceMocks([MockSpec<BookRepository>()])
 import 'mock_object_test.mocks.dart';
@@ -19,6 +20,7 @@ void main() {
         'save new book must success',
         () {
           bookSevice.save('1', 'Tutor', 100);
+          verify(bookRepo.save(Book('1', 'Tutor', 100)));
         },
       );
     },
